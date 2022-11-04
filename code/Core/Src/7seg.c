@@ -4,7 +4,7 @@
  *  Created on: Nov 4, 2022
  *      Author: Administrator
  */
-
+#include "7seg.h"
 
 void display7SEG(int num) {
 	//0: a, b, c ,d ,e, f=0, g=1
