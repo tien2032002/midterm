@@ -329,7 +329,7 @@ Discarded input sections
  .text          0x0000000000000000        0x0 ./Core/Src/software_timer.o
  .data          0x0000000000000000        0x0 ./Core/Src/software_timer.o
  .bss           0x0000000000000000        0x0 ./Core/Src/software_timer.o
- .text.setTimer1
+ .text.setTimer2
                 0x0000000000000000       0x28 ./Core/Src/software_timer.o
  .text.setTimer3
                 0x0000000000000000       0x28 ./Core/Src/software_timer.o
@@ -2600,9 +2600,9 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x000000000800119c        0xa ./Core/Src/main.o
                 0x000000000800119c                Error_Handler
  *fill*         0x00000000080011a6        0x2 
- .text.setTimer2
+ .text.setTimer1
                 0x00000000080011a8       0x28 ./Core/Src/software_timer.o
-                0x00000000080011a8                setTimer2
+                0x00000000080011a8                setTimer1
  .text.timeRun  0x00000000080011d0       0xfc ./Core/Src/software_timer.o
                 0x00000000080011d0                timeRun
  .text.HAL_MspInit

@@ -1343,7 +1343,7 @@ void button_reading ( void ){
  8000dda:	2300      	movs	r3, #0
  8000ddc:	607b      	str	r3, [r7, #4]
  8000dde:	e0b3      	b.n	8000f48 <button_reading+0x174>
-		if(timer2_flag==1) {
+		if(timer1_flag==1) {
  8000de0:	4b5e      	ldr	r3, [pc, #376]	; (8000f5c <button_reading+0x188>)
  8000de2:	681b      	ldr	r3, [r3, #0]
  8000de4:	2b01      	cmp	r3, #1
@@ -1352,9 +1352,9 @@ void button_reading ( void ){
  8000de8:	4b5d      	ldr	r3, [pc, #372]	; (8000f60 <button_reading+0x18c>)
  8000dea:	2200      	movs	r2, #0
  8000dec:	601a      	str	r2, [r3, #0]
-			setTimer2(0);
+			setTimer1(0);
  8000dee:	2000      	movs	r0, #0
- 8000df0:	f000 f9da 	bl	80011a8 <setTimer2>
+ 8000df0:	f000 f9da 	bl	80011a8 <setTimer1>
 		}
 		debounceButtonBuffer3 [i] = debounceButtonBuffer2 [i];
  8000df4:	4a5b      	ldr	r2, [pc, #364]	; (8000f64 <button_reading+0x190>)
@@ -1468,12 +1468,12 @@ void button_reading ( void ){
  8000ece:	681b      	ldr	r3, [r3, #0]
  8000ed0:	2b00      	cmp	r3, #0
  8000ed2:	d106      	bne.n	8000ee2 <button_reading+0x10e>
-						setTimer2(50);
+						setTimer1(50);
  8000ed4:	2032      	movs	r0, #50	; 0x32
- 8000ed6:	f000 f967 	bl	80011a8 <setTimer2>
-						flagForPressed=1;
+ 8000ed6:	f000 f967 	bl	80011a8 <setTimer1>
+						flagForPressed=0;
  8000eda:	4b21      	ldr	r3, [pc, #132]	; (8000f60 <button_reading+0x18c>)
- 8000edc:	2201      	movs	r2, #1
+ 8000edc:	2200      	movs	r2, #0
  8000ede:	601a      	str	r2, [r3, #0]
  8000ee0:	e02f      	b.n	8000f42 <button_reading+0x16e>
 					}
@@ -1487,9 +1487,9 @@ void button_reading ( void ){
  8000eec:	4b1c      	ldr	r3, [pc, #112]	; (8000f60 <button_reading+0x18c>)
  8000eee:	2200      	movs	r2, #0
  8000ef0:	601a      	str	r2, [r3, #0]
-						setTimer2(0);
+						setTimer1(0);
  8000ef2:	2000      	movs	r0, #0
- 8000ef4:	f000 f958 	bl	80011a8 <setTimer2>
+ 8000ef4:	f000 f958 	bl	80011a8 <setTimer1>
  8000ef8:	e023      	b.n	8000f42 <button_reading+0x16e>
 					}
 				}
@@ -1551,7 +1551,7 @@ void button_reading ( void ){
  8000f56:	46bd      	mov	sp, r7
  8000f58:	bd80      	pop	{r7, pc}
  8000f5a:	bf00      	nop
- 8000f5c:	200000ac 	.word	0x200000ac
+ 8000f5c:	200000a4 	.word	0x200000a4
  8000f60:	200000a0 	.word	0x200000a0
  8000f64:	20000098 	.word	0x20000098
  8000f68:	2000009c 	.word	0x2000009c
@@ -1976,25 +1976,26 @@ __STATIC_FORCEINLINE void __disable_irq(void)
  80011a4:	e7fe      	b.n	80011a4 <Error_Handler+0x8>
 	...
 
-080011a8 <setTimer2>:
-void setTimer1(int duration) {
-	timer1_counter=duration;
-	timer1_flag=0;
+080011a8 <setTimer1>:
+int timer5_flag=0;
+int timer5_counter=0;
+int timer6_flag=0;
+int timer6_counter=0;
 
-}
-void setTimer2(int duration) {
+void setTimer1(int duration) {
  80011a8:	b480      	push	{r7}
  80011aa:	b083      	sub	sp, #12
  80011ac:	af00      	add	r7, sp, #0
  80011ae:	6078      	str	r0, [r7, #4]
-	timer2_counter=duration;
- 80011b0:	4a05      	ldr	r2, [pc, #20]	; (80011c8 <setTimer2+0x20>)
+	timer1_counter=duration;
+ 80011b0:	4a05      	ldr	r2, [pc, #20]	; (80011c8 <setTimer1+0x20>)
  80011b2:	687b      	ldr	r3, [r7, #4]
  80011b4:	6013      	str	r3, [r2, #0]
-	timer2_flag=0;
- 80011b6:	4b05      	ldr	r3, [pc, #20]	; (80011cc <setTimer2+0x24>)
+	timer1_flag=0;
+ 80011b6:	4b05      	ldr	r3, [pc, #20]	; (80011cc <setTimer1+0x24>)
  80011b8:	2200      	movs	r2, #0
  80011ba:	601a      	str	r2, [r3, #0]
+
 }
  80011bc:	bf00      	nop
  80011be:	370c      	adds	r7, #12
@@ -2002,8 +2003,8 @@ void setTimer2(int duration) {
  80011c2:	bc80      	pop	{r7}
  80011c4:	4770      	bx	lr
  80011c6:	bf00      	nop
- 80011c8:	200000b0 	.word	0x200000b0
- 80011cc:	200000ac 	.word	0x200000ac
+ 80011c8:	200000a8 	.word	0x200000a8
+ 80011cc:	200000a4 	.word	0x200000a4
 
 080011d0 <timeRun>:
 void setTimer6(int duration) {

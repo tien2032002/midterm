@@ -36,9 +36,9 @@ void reset_button_buffer() {
 int flagForPressed=0;
 void button_reading ( void ){
 	for ( int i = 0; i < N0_OF_BUTTONS ; i ++){
-		if(timer2_flag==1) {
+		if(timer1_flag==1) {
 			flagForPressed=0;
-			setTimer2(0);
+			setTimer1(0);
 		}
 		debounceButtonBuffer3 [i] = debounceButtonBuffer2 [i];
 		debounceButtonBuffer2 [i] = debounceButtonBuffer1 [i];
@@ -50,13 +50,13 @@ void button_reading ( void ){
 					flagForButtonPress [i]=1;
 					counterForButtonPress1s [i]=DURATION_FOR_AUTO_INCREASING;
 					if (flagForPressed==0) {
-						setTimer2(50);
-						flagForPressed=1;
+						setTimer1(50);
+						flagForPressed=0;
 					}
 					else {
 						flagForButtonDoublePress[i]=1;
 						flagForPressed=0;
-						setTimer2(0);
+						setTimer1(0);
 					}
 				}
 			}
