@@ -42,7 +42,11 @@ void button_reading ( void ){
 		}
 		debounceButtonBuffer3 [i] = debounceButtonBuffer2 [i];
 		debounceButtonBuffer2 [i] = debounceButtonBuffer1 [i];
-		debounceButtonBuffer1 [i] = HAL_GPIO_ReadPin(GPIOC, BUTTON_Pin*pow(2,i));
+		debounceButtonBuffer1 [i] = HAL_GPIO_ReadPin(GPIOA, RESET_Pin*pow(2,i));
+		if (buttonBuffer[i]==BUTTON_IS_RELEASED) {
+			flagForButtonPress1s[i]=0;
+			counterForButtonPress1s[i]=0;
+		}
 		if( debounceButtonBuffer1 [i] == debounceButtonBuffer2 [i] && debounceButtonBuffer2[i]==debounceButtonBuffer3[i]) {
 			if (buttonBuffer[i] != debounceButtonBuffer3 [i]) {
 				buttonBuffer [i] = debounceButtonBuffer3 [i];
@@ -65,8 +69,6 @@ void button_reading ( void ){
 					counterForButtonPress1s [i]--;
 					if (counterForButtonPress1s[i]<=0) {
 						flagForButtonPress1s[i]=1;
-						buttonBuffer[i]=0;
-						counterForButtonPress1s [i]=DURATION_FOR_AUTO_INCREASING;
 					}
 				}
 			}
