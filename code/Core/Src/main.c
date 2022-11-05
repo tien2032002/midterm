@@ -100,11 +100,11 @@ int main(void)
   int status=0;
   while (1)
   {
-	  if (flagForButtonDoublePress[0]==1) {
+	  if (flagForButtonPress1s[0]==1) {
 		  display7SEG(status);
 		  status++;
 		  if (status>=10) status=0;
-		  flagForButtonDoublePress[0]=0;
+		  flagForButtonPress1s[0]=0;
 	  }
     /* USER CODE END WHILE */
 

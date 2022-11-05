@@ -1610,7 +1610,7 @@ int main(void)
  8000faa:	607b      	str	r3, [r7, #4]
   while (1)
   {
-	  if (flagForButtonDoublePress[0]==1) {
+	  if (flagForButtonPress1s[0]==1) {
  8000fac:	4b0a      	ldr	r3, [pc, #40]	; (8000fd8 <main+0x4c>)
  8000fae:	681b      	ldr	r3, [r3, #0]
  8000fb0:	2b01      	cmp	r3, #1
@@ -1628,15 +1628,15 @@ int main(void)
  8000fc4:	dd01      	ble.n	8000fca <main+0x3e>
  8000fc6:	2300      	movs	r3, #0
  8000fc8:	607b      	str	r3, [r7, #4]
-		  flagForButtonDoublePress[0]=0;
+		  flagForButtonPress1s[0]=0;
  8000fca:	4b03      	ldr	r3, [pc, #12]	; (8000fd8 <main+0x4c>)
  8000fcc:	2200      	movs	r2, #0
  8000fce:	601a      	str	r2, [r3, #0]
-	  if (flagForButtonDoublePress[0]==1) {
+	  if (flagForButtonPress1s[0]==1) {
  8000fd0:	e7ec      	b.n	8000fac <main+0x20>
  8000fd2:	bf00      	nop
  8000fd4:	200000e4 	.word	0x200000e4
- 8000fd8:	200000d4 	.word	0x200000d4
+ 8000fd8:	200000dc 	.word	0x200000dc
 
 08000fdc <SystemClock_Config>:
 /**
