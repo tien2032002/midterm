@@ -1,5 +1,7 @@
+"./Core/Inc/led_blinky.o"
 "./Core/Src/7seg.o"
 "./Core/Src/button.o"
+"./Core/Src/fsm_simple_button_run.o"
 "./Core/Src/global.o"
 "./Core/Src/main.o"
 "./Core/Src/software_timer.o"
