@@ -23,7 +23,7 @@ void button_reading ( void );
 void reset_button_buffer();
 
 extern int flagForButtonPress[N0_OF_BUTTONS];
-extern int flagForButtonPress1s[N0_OF_BUTTONS];
+extern int flagForButtonPress3s[N0_OF_BUTTONS];
 extern int flagForButtonDoublePress [N0_OF_BUTTONS];
 
 extern int flagForPressed;
